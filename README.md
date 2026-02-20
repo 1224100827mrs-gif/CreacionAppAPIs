@@ -48,7 +48,7 @@ Aplicación web interactiva que visualiza datos ambientales en tiempo real, fome
 
 ---
 
-## 🔌 APIs Utilizadas
+## APIs Utilizadas
 
 | API | Propósito | Endpoint |
 |-----|-----------|----------|
@@ -59,7 +59,7 @@ Aplicación web interactiva que visualiza datos ambientales en tiempo real, fome
 
 ---
 
-## ⚙️ Tecnologías Implementadas
+## Tecnologías Implementadas
 
 - **Backend**: Python con Flask
 - **Frontend**: HTML, Tailwind CSS, FontAwesome
