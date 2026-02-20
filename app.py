@@ -19,7 +19,7 @@ def comunidad():
         {"titulo": "Océanos de Plástico", "desc": "8 millones de toneladas de basura llegan al mar cada año, afectando a 700 especies.", "img": "https://images.unsplash.com/photo-1621451537084-482c73073a0f?w=600&auto=format&fit=crop"},
         {"titulo": "Energía del Futuro", "desc": "La energía solar fotovoltaica ya es la fuente de electricidad más barata en la historia.", "img": "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&auto=format&fit=crop"},
         {"titulo": "Deforestación Global", "desc": "Perdemos 10 millones de hectáreas de bosque al año, un área del tamaño de Islandia.", "img": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=600&auto=format&fit=crop"},
-# Reemplaza SOLAMENTE estas dos líneas en eco_articles:
+
 {"titulo": "Abejas en Peligro", "desc": "El 75% de los cultivos dependen de polinizadores. Su extinción amenaza la seguridad alimentaria.", "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Apis_mellifera_Western_honey_bee.jpg/600px-Apis_mellifera_Western_honey_bee.jpg"},
 
 {"titulo": "Glaciares en Retroceso", "desc": "El Ártico se calienta 4 veces más rápido que el resto del planeta por el efecto albedo.", "img": "https://images.pexels.com/photos/533769/pexels-photo-533769.jpeg?auto=compress&cs=tinysrgb&w=600"},
@@ -31,7 +31,7 @@ def comunidad():
 def add_tip():
     text = request.form.get("tip")
     if text:
-        # Lista de imágenes ambientales para los tips
+      
         eco_images = [
             "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=250&fit=crop",
             "https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?w=400&h=250&fit=crop",
