@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mx-auto px-4 lg:px-12 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <!-- COLUMNA IZQUIERDA: AIRE Y REGISTRO -->
+        <div class="lg:col-span-4 space-y-8">
+            <div class="bg-white rounded-[3rem] p-10 shadow-sm border border-emerald-100 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-[#bef264]"></div>
+                <h3 class="text-[10px] font-black text-emerald-700 uppercase tracking-widest mb-6">Aire en {{ air.city }}</h3>
+                <div class="inline-flex items-center justify-center w-28 h-28 rounded-full border-8 border-[#f7fee7] mb-4">
+                    <span class="text-5xl font-black text-emerald-600">{{ air.value }}</span>
+                </div>
+                <p class="text-xs text-slate-400 font-bold uppercase tracking-tighter">{{ air.unit }} de PM2.5</p>
+            </div>
+
+            <div class="bg-[#bef264] rounded-[3rem] p-10 shadow-xl border-4 border-white">
+                <h3 class="text-2xl font-black text-slate-900 mb-4 italic leading-tight text-center">Mi Registro <br>Eco-Diario</h3>
+                <form action="/add_tip" method="POST" class="space-y-4">
+                    <textarea name="tip" class="w-full bg-white rounded-2xl p-4 text-sm border-none shadow-inner focus:ring-4 focus:ring-emerald-500" placeholder="¿Qué acción sostenible realizaste hoy?" required></textarea>
+                    <button type="submit" class="w-full bg-slate-900 text-[#bef264] font-black py-3 rounded-2xl hover:scale-105 transition uppercase text-xs">Guardar Entrada</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- COLUMNA DERECHA: LISTADO DE ACCIONES CON BORRADO -->
+        <div class="lg:col-span-8 space-y-6">
+            <h3 class="text-xl font-bold text-slate-800 px-4 flex items-center">
+                <i class="fa-solid fa-clock-rotate-left me-2 text-emerald-600"></i> Historial de Logros
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {% for tip in tips %}
+                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-slate-100 flex flex-col group relative">
+                    <!-- Botón de Borrado Pro -->
+                    <a href="/delete_tip/{{ tip.id }}" class="absolute top-4 right-4 w-8 h-8 bg-white/90 backdrop-blur-sm text-red-500 rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all z-10 hover:bg-red-500 hover:text-white" title="Eliminar entrada">
+                        <i class="fa-solid fa-trash-can text-xs"></i>
+                    </a>
+                    
+                    <img src="{{ tip.img }}" class="w-full h-40 object-cover opacity-90" alt="Tip">
+                    <div class="p-6">
+                        <p class="text-sm font-bold text-slate-700 italic leading-relaxed">"{{ tip.text }}"</p>
+                        <p class="text-[10px] mt-3 text-slate-400 font-bold uppercase tracking-widest">Registrado hoy</p>
+                    </div>
+                </div>
+                {% else %}
+                <div class="col-span-2 text-center py-20 bg-slate-50 border-2 border-dashed border-slate-200 rounded-[3rem]">
+                    <i class="fa-solid fa-pen-nib text-4xl text-slate-200 mb-4"></i>
+                    <p class="text-slate-400 italic">Tu diario está esperando tu primera eco-acción.</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

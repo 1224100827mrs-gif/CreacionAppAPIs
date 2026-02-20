@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mx-auto px-4 lg:px-12 pb-20">
+    
+    <!-- HERO INFORMATIVO (VIBRANTE) -->
+    <div class="bg-[#bef264] rounded-[4rem] p-12 mb-16 shadow-2xl flex items-center justify-between border-b-8 border-emerald-700 overflow-hidden relative">
+        <div class="max-w-xl z-10">
+            <h2 class="text-5xl font-black text-slate-900 leading-none tracking-tighter uppercase">Centro de <br><span class="text-emerald-700 italic">Conocimiento</span></h2>
+            <p class="text-slate-800 font-bold mt-4 text-lg">Información experta para entender nuestro impacto en el planeta.</p>
+        </div>
+        <i class="fa-solid fa-earth-americas text-[15rem] absolute -right-10 text-emerald-800 opacity-10 hidden md:block"></i>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <!-- SECCIÓN DE ARTÍCULOS (6 CARDS PRO) -->
+        <div class="lg:col-span-8">
+            <h3 class="text-xl font-bold text-slate-800 mb-8 px-2 flex items-center">
+                <span class="w-3 h-8 bg-[#bef264] mr-3 rounded-full"></span> Dossier Ambiental
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {% for art in articles %}
+                <div class="bg-white rounded-[3.5rem] overflow-hidden shadow-lg border border-emerald-50 group hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="{{ art.img }}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="info">
+                        <div class="absolute top-6 left-6 bg-[#bef264] text-slate-900 text-[10px] font-black px-4 py-1.5 rounded-full shadow-xl">FACT-CHECKED</div>
+                    </div>
+                    <div class="p-8">
+                        <h4 class="font-black text-xl text-[#064e3b] mb-3 uppercase tracking-tighter leading-tight">{{ art.titulo }}</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">{{ art.desc }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- VIDEOS EDUCATIVOS (YOUTUBE) -->
+        <div class="lg:col-span-4 space-y-8">
+            <h3 class="text-xl font-bold text-slate-800 px-2 flex items-center">
+                <i class="fa-solid fa-circle-play text-red-500 me-3 text-2xl"></i> Eco-Streaming
+            </h3>
+            
+            <div class="sticky top-28 space-y-6">
+                {% for video in videos %}
+                <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-slate-100 p-3 hover:border-emerald-300 transition duration-300">
+                    <div class="aspect-video rounded-3xl overflow-hidden shadow-inner mb-3">
+                        <!-- CORREGIDO: URL de YouTube embed con parámetros -->
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/{{ video.id }}?rel=0&modestbranding=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <p class="px-2 text-[11px] font-black text-slate-500 uppercase tracking-widest text-center">{{ video.title }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

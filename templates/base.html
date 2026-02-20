@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPulse | Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+    <style>
+        .glass-nav { background: rgba(6, 78, 59, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-link { position: relative; transition: 0.3s; }
+        .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #bef264; transition: 0.3s; }
+        .nav-link:hover::after { width: 100%; }
+        @keyframes pulse-live { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+        .live-dot { animation: pulse-live 2s infinite; }
+    </style>
+</head>
+<body class="bg-[#f0f4f2] text-slate-800 font-sans">
+
+    <!-- Header Interactiva Pro -->
+    <header class="glass-nav sticky top-0 z-50 py-4 text-white">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-leaf text-2xl text-[#bef264]"></i>
+                <h1 class="text-2xl font-black tracking-tighter italic">
+                    <a href="/">ECO<span class="text-[#bef264]">PULSE</span></a>
+                </h1>
+            </div>
+            
+            <nav class="flex space-x-8 text-sm font-bold uppercase tracking-widest">
+                <a href="/" class="nav-link text-white">Dashboard</a>
+                <a href="/comunidad" class="nav-link text-white/70 hover:text-white">Comunidad</a>
+            </nav>
+
+            <div class="flex items-center bg-black/20 px-4 py-1.5 rounded-full border border-white/10">
+                <span class="w-2 h-2 bg-[#bef264] rounded-full me-2 live-dot shadow-[0_0_8px_#bef264]"></span>
+                <span class="text-[10px] font-black uppercase tracking-tighter opacity-80">Live Data Sync</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="pt-8">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="mt-20 py-10 border-t border-emerald-100 text-center text-slate-400 text-xs">
+        <p>© 2024 EcoPulse Dashboard • Prototipo Educativo de Alto Impacto</p>
+    </footer>
+</body>
+</html>
