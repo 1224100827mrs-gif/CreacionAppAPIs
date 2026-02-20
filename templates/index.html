@@ -3,7 +3,6 @@
 <div class="container mx-auto px-4 lg:px-12 pb-20">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
         
-        <!-- COLUMNA IZQUIERDA: AIRE Y REGISTRO -->
         <div class="lg:col-span-4 space-y-8">
             <div class="bg-white rounded-[3rem] p-10 shadow-sm border border-emerald-100 text-center relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-2 bg-[#bef264]"></div>
@@ -23,7 +22,6 @@
             </div>
         </div>
 
-        <!-- COLUMNA DERECHA: LISTADO DE ACCIONES CON BORRADO -->
         <div class="lg:col-span-8 space-y-6">
             <h3 class="text-xl font-bold text-slate-800 px-4 flex items-center">
                 <i class="fa-solid fa-clock-rotate-left me-2 text-emerald-600"></i> Historial de Logros
@@ -31,7 +29,6 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {% for tip in tips %}
                 <div class="bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-slate-100 flex flex-col group relative">
-                    <!-- Botón de Borrado Pro -->
                     <a href="/delete_tip/{{ tip.id }}" class="absolute top-4 right-4 w-8 h-8 bg-white/90 backdrop-blur-sm text-red-500 rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-all z-10 hover:bg-red-500 hover:text-white" title="Eliminar entrada">
                         <i class="fa-solid fa-trash-can text-xs"></i>
                     </a>
