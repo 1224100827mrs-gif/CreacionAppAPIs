@@ -2,7 +2,6 @@ import requests
 
 def get_user_location():
     try:
-        # API 1: Localización por IP
         res = requests.get("http://ip-api.com/json/", timeout=5).json()
         if res.get("status") == "success":
             return res.get("city", "Mexico City"), res.get("countryCode", "MX")
@@ -14,7 +13,6 @@ def get_user_location():
 def get_environmental_data():
     city, country = get_user_location()
     
-    # API 2: Calidad del Aire (OpenAQ)
     try:
         air_res = requests.get(
             f"https://api.openaq.org/v2/latest?city={city}&limit=1", 
@@ -39,7 +37,6 @@ def get_environmental_data():
         print(f"Error en OpenAQ: {e}")
         air = {"value": 12.4, "unit": "µg/m³", "city": city}
 
-    # API 3: Posts de DummyJSON
     try:
         posts_res = requests.get("https://dummyjson.com/posts?limit=5", timeout=5).json()
         posts = posts_res.get("posts", [])
@@ -47,7 +44,6 @@ def get_environmental_data():
         print(f"Error en DummyJSON: {e}")
         posts = []
 
-    # API 4: Videos de YouTube - IDs verificados que funcionan
     videos = [
     {"id": "wc_65-yf6zU", "title": "🌱 ¿En qué consiste la economía circular? | ACCIONA"},
     {"id": "3pX5raKTYQc", "title": "⚡ Energías Renovables y No Renovables | A Cierta Ciencia"},
